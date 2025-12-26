@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Iqlima Rojulaini</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/default-styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    .gallery-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .gallery-item {
+      width: 100%;
+      aspect-ratio: 1 / 1; /* ensures square */
+      overflow: hidden;
+      transition: ease 300ms;
+
+      &:hover{
+        scale: 1.05;
+      }
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;   
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="container">
+    <section id="gallery">
+      <div class="default-content">
+        <div class="flex flex-col w-full">
+          <div class="py-3">
+            <h2 class="text-center pb-1">Gallery</h2>  
+          </div>
+
+          <div>
+            <h4>
+              Classmates
+            </h4>
+          </div>
+          <div class="gallery-grid pb-3">
+            <div class="gallery-item"><img src="../assets/gallery/c1.jpg" alt="Image 1"></div>
+            <div class="gallery-item"><img src="../assets/gallery/c2.jpg" alt="Image 2"></div>
+            <div class="gallery-item"><img src="../assets/gallery/c3.jpg" alt="Image 3"></div>
+          </div>
+
+          <div>
+            <h4>
+              Families
+            </h4>
+          </div>
+          <div class="gallery-grid pb-3">
+            <div class="gallery-item"><img src="../assets/gallery/f1.jpg" alt="Image 4"></div>
+            <div class="gallery-item"><img src="../assets/gallery/f2.jpg" alt="Image 5"></div>
+            <div class="gallery-item"><img src="../assets/gallery/f3.jpg" alt="Image 6"></div>
+          </div>
+
+          <div>
+            <h4> My Circle <button id="surpriseButton">Give a Shout-Out to My Favorite People!</button> </h4>
+          </div>
+          <div class="gallery-grid pb-3">
+            <div class="gallery-item"><img src="../assets/gallery/m1.jpg" alt="Image 7"></div>
+            <div class="gallery-item"><img src="../assets/gallery/m2.jpg" alt="Image 8"></div>
+            <div class="gallery-item"><img src="../assets/gallery/m3.jpg" alt="Image 9"></div>
+          </div>
+
+        </div>    
+      </div>      
+    </section>
+
+  </div>
+  <script src="../js/loadLayout.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.js"></script>
+  <script>
+    // Step 2: Get the button element
+    const button = document.getElementById('surpriseButton');
+
+    // Step 3: Attach the confetti function to the click event
+    button.addEventListener('click', () => {
+      confetti({
+        particleCount: 100, // Number of confetti pieces
+        spread: 70, // How wide the burst is
+        origin: { y: 1 } // Where on the page to fire from (0.6 is mid-page)
+      });
+    });
+  </script>
+</body>
+</html>
+

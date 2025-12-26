@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Personal Website</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/default-styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    body{
+      background-color: #f5f5f5;
+    }
+    .title {
+      margin-top: 3rem;
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .profile-card {
+      background-color: white;
+      display: flex;
+      gap: 25px;
+      padding: 25px;
+      border-radius: 16px;
+      border: 1px solid #eee;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .profile-info .name {
+      font-size: 26px;
+      font-weight: 700;
+      margin: 0 0 5px 0;
+    }
+
+    .profile-info .role {
+      font-size: 16px;
+      opacity: 0.7;
+      margin-bottom: 15px;
+    }
+
+    .quick-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .details-section {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .details-section h3 {
+      font-size: 22px;
+      font-weight: 600;
+      padding-bottom: 1rem;
+      border-bottom: 2.5px solid #ccc;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .detail-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .detail-row label {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .detail-row p,
+    .detail-row div {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .detail-long {
+      font-size: 14px !important;
+      font-weight: 400 !important;
+      line-height: 1.6;
+      opacity: 0.85;
+      padding-right: 10px;
+    }
+
+    .detail-box {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px #d7d7d7 solid;
+      background: #fafafa;
+      font-weight: 400 !important;
+      font-size: 14px !important;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    small{
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    #family{
+      margin-top: 3rem;
+      padding-bottom: 5rem;
+      background-color: #ddd;
+
+      .title {
+        color: var(--accent)
+      }
+
+      label{
+        color: var(--accent);
+        font-size: 16px;
+      }
+
+      img{
+        height: 100%;
+      }
+    }
+
+    .family-card {
+      background: white;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      font-size: 14px !important;
+
+      .grid-2{
+        gap: 1rem
+      }
+
+      label{
+        color: #666 !important;
+      }
+    }
+
+    ul, li ol{
+      margin: 0;
+    }
+
+    #family ul li {
+      display: list-item;
+    }
+
+    ul li {
+        list-style-type: square; 
+        color: var(--accent);
+    }
+
+   .tag{
+        margin: 0;
+    }
+    </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="container">
+    <section id="personalDetails">
+      <div class="default-content">
+        <div class="flex flex-col gap-2 w-full">
+          <h2 class="title">Personal Profile</h2>
+  
+          <!-- TOP PROFILE CARD -->
+          <div class="profile-card">
+            <img src="../assets/me.png" class="profile-img" />
+  
+            <div class="profile-info">
+              <h2 class="name">Iqlima Binti Rojulaini</h2>
+              <p class="role">Graphic Designer / Creative Student</p>
+  
+              <div class="quick-details">
+                <span>Age: 20</span>
+                <span>Female</span>
+                <span>Diploma in Information Management</span>
+              </div>
+            </div>
+          </div>
+  
+          <!-- DETAILS SECTION -->
+          <div class="details-section">
+            <h3>Personal Details</h3>
+
+            <!-- GRID 2 -->
+            <div class="grid-2">
+              <div class="detail-row">
+                <label>Full Name</label>
+                <p>Iqlima Binti Rojulaini</p>
+              </div>
+    
+              <div class="detail-row">
+                <label>Date of Birth</label>
+                <p>16/08/2005</p>
+              </div>
+    
+              <div class="detail-row">
+                <label>Place of Birth</label>
+                <p>Sungai Petani, Kedah</p>
+              </div>
+    
+              <div class="detail-row">
+                <label>Hobbies</label>
+                <p>Shopping, drawing, watching Korean dramas, playing badminton</p>
+              </div>
+            </div>
+
+            <!-- LONG TEXTS AS CLEAN TEXT BLOCKS -->
+            <div class="detail-row">
+              <label>Address</label>
+              <div class="detail-box">
+                No 15, Jalan Mawar 2, Lorong ½ A, Persiaran Amanjaya 4, Bandar Ambangan Height, 08000, Sungai Petani, Kedah.
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="detail-row">
+                <label>Personality</label>
+                <p class="detail-long">Friendly, thoughtful, creative, and composed</p>
+              </div>
+
+              <div class="detail-row">
+                <label>Passions</label>
+                <p class="detail-long">Expressing emotions through art and design</p>
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="detail-row">
+                <label>Fun Fact</label>
+                <p class="detail-long">I love winding down with dramas late at night</p>
+                <div>
+                  <p class="detail-long">
+                    <small class="tag">🎬 Don’t miss this Korean drama!</small>
+                  </p>
+                </div>
+                <div class="flex">
+                  <iframe src="https://www.youtube.com/embed/tqVVrTvrI8U?si=ujccR5QXUOdctzin" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+              </div>
+
+              <div class="detail-row">
+                <label>Motto</label>
+                <p class="detail-long">Always give your best and trust the journey.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAMILY SECTION -->
+    <section id="family">
+      <div class="default-content">
+        <div class="flex flex-col gap-2 w-full">
+          <h2 class="title">My Family</h2>
+
+          <ul>
+            <li class="detail-row">
+              <label>Family Values</label>
+              <p class="detail-long">
+                We are a simple and close family. We enjoy spending time together during holidays, going out for shopping or eating out. They always encourage me to continue my studies and become a better person.
+              </p>
+            </li>
+  
+            <li class="detail-row">
+              <label>Why My Family Is Important</label>
+              <p class="detail-long">
+                They inspire me to work hard, stay humble, and appreciate everything I have.
+              </p>
+            </li>
+          </ul>
+
+          <div class="flex">
+            <div class="img">
+              <img src="../assets/gallery/f3.jpg" alt="family" />
+            </div>           
+  
+            <!-- FAMILY CARD -->
+          <div class="family-card">
+
+            <div class="detail-row">
+              <label>Father</label>
+              <p class="detail-long">Rojulaini Bin Ahmad (Teacher)</p>
+            </div>
+
+            <div class="detail-row">
+              <label>Mother</label>
+              <p class="detail-long">Umi Salmah Binti Yeop (Teacher)</li>
+            </div>
+
+            <div class="detail-row">
+              <label>Siblings</label>
+              <ol>
+                <li>Rojulul Ilmi Bin Rojulaini – 20 <span class="tag">Me</span></li>
+                <li>Rojulul Ilmi Bin Rojulaini – 18</li>
+                <li>Ilmina Binti Rojulaini – 16</li>
+                <li>Rojulun Amin Bin Rojulaini – 11</li>
+              </ol>
+            </div>
+
+          </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="../js/loadLayout.js"></script>
+</body>
+</html>
