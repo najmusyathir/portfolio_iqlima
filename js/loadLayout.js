@@ -53,6 +53,95 @@ const footerHTML = `
     
     `;
 
+// Background Music Setup
+function setupBackgroundMusic() {
+  // Check if audio element already exists
+  let bgMusic = document.getElementById("bg-music");
+  
+  if (!bgMusic) {
+    // Create audio element
+    bgMusic = document.createElement("audio");
+    bgMusic.id = "bg-music";
+    bgMusic.src = "../assets/bg_song.mp3";
+    bgMusic.loop = true;
+    bgMusic.volume = 0.5; // Set volume to 50%
+    bgMusic.preload = "auto";
+    
+    // Hide the audio element (optional, for cleaner DOM)
+    bgMusic.style.display = "none";
+    
+    // Append to body
+    document.body.appendChild(bgMusic);
+    
+    // Restore playback position from localStorage
+    const savedTime = localStorage.getItem("bgMusicTime");
+    if (savedTime) {
+      bgMusic.currentTime = parseFloat(savedTime);
+    }
+    
+    // Try to play automatically
+    bgMusic.play().catch(error => {
+      // Autoplay was prevented - this is normal in modern browsers
+      // Music will start when user interacts with the page
+      console.log("Autoplay prevented. Music will start on user interaction.");
+    });
+    
+    // Save playback position periodically
+    setInterval(() => {
+      if (!bgMusic.paused) {
+        localStorage.setItem("bgMusicTime", bgMusic.currentTime.toString());
+      }
+    }, 1000); // Save every second
+    
+    // Save position before page unload
+    window.addEventListener("beforeunload", () => {
+      localStorage.setItem("bgMusicTime", bgMusic.currentTime.toString());
+      localStorage.setItem("bgMusicPlaying", !bgMusic.paused);
+    });
+    
+    // Restore playing state if it was playing
+    const wasPlaying = localStorage.getItem("bgMusicPlaying") === "true";
+    if (wasPlaying) {
+      bgMusic.play().catch(() => {
+        // If autoplay fails, try again on first user interaction
+        const playOnInteraction = () => {
+          bgMusic.play().catch(() => {});
+          document.removeEventListener("click", playOnInteraction);
+          document.removeEventListener("touchstart", playOnInteraction);
+        };
+        document.addEventListener("click", playOnInteraction);
+        document.addEventListener("touchstart", playOnInteraction);
+      });
+    }
+    
+    // Try to resume on any user interaction if it was playing
+    if (wasPlaying) {
+      const resumeOnInteraction = () => {
+        if (bgMusic.paused) {
+          bgMusic.play().catch(() => {});
+        }
+        document.removeEventListener("click", resumeOnInteraction);
+        document.removeEventListener("touchstart", resumeOnInteraction);
+        document.removeEventListener("keydown", resumeOnInteraction);
+      };
+      document.addEventListener("click", resumeOnInteraction);
+      document.addEventListener("touchstart", resumeOnInteraction);
+      document.addEventListener("keydown", resumeOnInteraction);
+    }
+  } else {
+    // If audio element already exists, just try to play it
+    const savedTime = localStorage.getItem("bgMusicTime");
+    if (savedTime) {
+      bgMusic.currentTime = parseFloat(savedTime);
+    }
+    
+    const wasPlaying = localStorage.getItem("bgMusicPlaying") === "true";
+    if (wasPlaying && bgMusic.paused) {
+      bgMusic.play().catch(() => {});
+    }
+  }
+}
+
 // Inject into page
 (function () {
   let headerPlaceholder = document.querySelector("#header-placeholder");
@@ -71,4 +160,7 @@ const footerHTML = `
 
   headerPlaceholder.innerHTML = navbarHTML;
   footerPlaceholder.innerHTML = footerHTML;
+  
+  // Setup background music
+  setupBackgroundMusic();
 })();
